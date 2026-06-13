@@ -24,6 +24,7 @@
 ## Установка и запуск
 
 ### Требования
+
 - Python (рекомендуется 3.10 - 3.12)
 - Node.js 18+
 - PostgreSQL
@@ -31,33 +32,50 @@
 ### 1. Клонирование репозитория
 
 `git clone https://github.com/ValeriiGrishin/my-cloud-storage.git`
+
 `cd my-cloud-storage`
 
 ### 2. Настройка бэкенда
 
 `cd backend`
+
 `python -m venv venv`
+
 `source venv/Scripts/activate` (Windows: `venv\Scripts\activate`)
+
 `pip install -r requirements.txt`
+
 
 Создайте файл `.env` (скопируйте из `.env.example`):
 
 `SECRET_KEY=your-secret-key`
+
 `DEBUG=True`
+
 `DB_NAME=cloud_storage`
+
 `DB_USER=postgres`
+
 `DB_PASSWORD=your_password`
+
 `ADMIN_PASSWORD=change_me`
 
+
 Выполните миграции:
+
 `python manage.py makemigrations`
+
 `python manage.py migrate`
+
 `python manage.py runserver`
+
 
 ### 3. Настройка фронтенда
 
 `cd ../frontend`
+
 `npm install`
+
 `npm start`
 
 ### 4. Доступ к приложению
