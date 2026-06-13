@@ -156,8 +156,16 @@ function Files() {
   const handleShare = async (fileId) => {
     try {
       const response = await api.get(`/files/${fileId}/share/`);
-      const fullLink = `${window.location.protocol}//${window.location.hostname}:8000${response.data.share_url}`;
-      navigator.clipboard.writeText(fullLink);
+      const fullLink = `${window.location.origin}${response.data.share_url}`;
+      
+      // Альтернативный способ копирования (работает и на HTTP)
+      const textarea = document.createElement('textarea');
+      textarea.value = fullLink;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      
       alert(`Ссылка скопирована: ${fullLink}`);
     } catch (error) {
       console.error('Ошибка:', error);
